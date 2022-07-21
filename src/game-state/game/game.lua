@@ -5,6 +5,7 @@ local GameStateService = require("src/services/game-state-service")
 
 local FpsModel = require("src/models/fps")
 local GameStateEnum = require("src/enum/game-state-enum")
+local KeyCodeEnum = require("src/enum/key-code-enum")
 
 Game.fps = FpsModel:default()
 
@@ -18,7 +19,7 @@ function Game:draw()
 end
 
 function go_to_menu_state_when_escape_pressed() 
-    if love.keyboard.isDown("escape") then
+    if love.keyboard.isDown(KeyCodeEnum.Escape) then
         GameStateService:setGameState(GameStateEnum.Menu)
     end
 end

@@ -2,6 +2,7 @@ local Menu = {}
 local FontFactory = require("src/factories/font-factory")
 local GameStateService = require("src/services/game-state-service")
 local GameStateEnum = require("src/enum/game-state-enum")
+local KeyCodeEnum = require("src/enum/key-code-enum")
 
 function Menu:update(dt) 
     go_to_game_when_space_pressed()
@@ -12,7 +13,7 @@ function Menu:draw()
 end
 
 function go_to_game_when_space_pressed() 
-    if love.keyboard.isDown("space") then
+    if love.keyboard.isDown(KeyCodeEnum.Space) then
         GameStateService:setGameState(GameStateEnum.Game)
     end
 end
