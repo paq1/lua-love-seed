@@ -1,24 +1,31 @@
 local Menu = {}
 local FontFactory = require("src/factories/font-factory")
+local MusicFactory = require("src/factories/music-factory")
 local GameStateService = require("src/services/game-state-service")
 local GameStateEnum = require("src/enum/game-state-enum")
 local KeyCodeEnum = require("src/enum/key-code-enum")
 
 function Menu:update(dt) 
-    go_to_game_when_space_pressed()
+    playMusic()
+    goToGameWhenSpacePressed()
 end
 
 function Menu:draw() 
-    print_pressed_space_to_play_on_window()
+    printPressedSpaceToPlayOnWindow()
 end
 
-function go_to_game_when_space_pressed() 
+function playMusic()
+    MusicFactory:playMusicMenu()
+end
+
+function goToGameWhenSpacePressed() 
     if love.keyboard.isDown(KeyCodeEnum.Space) then
         GameStateService:setGameState(GameStateEnum.Game)
+        MusicFactory:stopMusicMenu()
     end
 end
 
-function print_pressed_space_to_play_on_window()
+function printPressedSpaceToPlayOnWindow()
     local text = "press space to play"
     local font = FontFactory:getFontMenu()
     local font_size = FontFactory:getFontSizeMenu()

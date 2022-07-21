@@ -7,10 +7,9 @@ FontFactory.comic_font = nil
 function FontFactory:getFontMenu()
     if FontFactory.comic_font == nil then
         FontFactory.comic_font = love.graphics.newFont(FontFactory.font_comic_path, FontFactory.font_size_comic_path)
-        return FontFactory.comic_font
-    else
-        return FontFactory.comic_font
     end
+    return FontFactory.comic_font
+    
 end
 
 function FontFactory:getFontSizeMenu()
