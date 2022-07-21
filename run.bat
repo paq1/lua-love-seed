@@ -1,0 +1,1 @@
+"C:\Program Files\LOVE\love.exe" "D:\development\jeux\love\dice-dungeon"

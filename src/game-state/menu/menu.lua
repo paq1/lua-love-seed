@@ -1,0 +1,35 @@
+local Menu = {}
+local FontFactory = require("src/factories/font-factory")
+local GameStateService = require("src/services/game-state-service")
+local GameStateEnum = require("src/enum/game-state-enum")
+
+function Menu:update(dt) 
+    go_to_game_when_space_pressed()
+end
+
+function Menu:draw() 
+    print_pressed_space_to_play_on_window()
+end
+
+function go_to_game_when_space_pressed() 
+    if love.keyboard.isDown("space") then
+        GameStateService:setGameState(GameStateEnum.Game)
+    end
+end
+
+function print_pressed_space_to_play_on_window()
+    local text = "press space to play"
+    local font = FontFactory:getFontMenu()
+    local font_size = FontFactory:getFontSizeMenu()
+
+    local pos = {
+        x = love.graphics.getWidth() / 2. - ((#text / 2.) * (font_size / 2.5)),
+        y = love.graphics.getHeight() / 2. - font_size / 2.
+    }
+
+    love.graphics.setColor(1, 0, 0)
+    love.graphics.setFont(font)
+    love.graphics.print(text, pos.x, pos.y)
+end
+
+return Menu
