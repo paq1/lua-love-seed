@@ -1,12 +1,10 @@
 local SpritesFactory = {}
 
-SpritesFactory.balle = nil
+local SpriteModel = require("src/models/sprite-model")
 
-function SpritesFactory.getBalle()
-    if SpritesFactory.balle == nil then
-        SpritesFactory.balle = love.graphics.newImage("assets/sprites/balle.png")
-    end
-    return SpritesFactory.balle
+function SpritesFactory.createSpriteBalle()
+    local image = love.graphics.newImage("assets/sprites/balle.png")
+    return SpriteModel:new(image)
 end
 
 return SpritesFactory
